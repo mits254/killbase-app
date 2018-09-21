@@ -1,0 +1,41 @@
+<% include /Users/shubhamagrawal/Desktop/Q2/killbase-app/views/header.ejs %>
+<body style='background-color:lightgray' >
+    <h2 style='text-align: center'>EDIT CONTRACT</h2>
+    <form name="form1" method="POST" action="/editContract/<%=contracts[0].contract_id %>">
+        <table align=center>
+            <tr>
+                <td>PHOTO</td>
+                <td><input type="text" name="target_photo" value="<%= contracts[0].target_photo %>"></td>
+            </tr>
+            <tr>
+                <td>Target name</td>
+                <td><input type="text" name="target_name" required='true' value="<%= contracts[0].target_name %>"></td>
+            </tr>
+            <tr>
+                <td>Target Location</td>
+                <td><input type="text" name="target_location" required='true' value="<%= contracts[0].target_location %>"></td>
+            </tr>
+            <tr>
+                <td>Target Security</td>
+                <td><input type="text" name="target_security" required='true' placeholder="integer only" value="<%= contracts[0].target_security %>"></td>
+            </tr>
+            <tr>
+                <td>Client Name</td>
+                <td><input type="text" name="client_name" required='true' value="<%= contracts[0].client_name %>"></td>
+            </tr>
+            <tr>
+            <tr>
+                <td>Budget</td>
+                <td><input type="text" name="budget" required='true' placeholder="integer only" value="<%= contracts[0].budget %>"></td>
+            </tr>
+            <tr>
+                    <td>Complete</td>
+                    <td><input type="text" name="complete" required='true' placeholder="boolean" value="<%= contracts[0].complete %>"></td>
+            </tr>
+            <td colspan="2"><input type="submit" value="Save"></td>
+            </tr>
+        </table>
+    </form>
+    
+</body>
+</html>

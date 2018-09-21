@@ -1,0 +1,53 @@
+<% include header.ejs %>
+<body style='background-color:lightgray'>
+    <div style='text-align: center'>
+        <h1>ACTIVE ASSASSINS</h1>
+        <a href="/newAssassin" style=' padding-left: 30px'><button class='btn btn-danger'>New Assassins</button></a>
+        
+    </div>
+     
+    <span class="container">
+        <div class="row">
+            <% assassins.forEach(function(assassins){ %>
+            <div class="col-lg-3 col-sm-6">
+
+                <div class="card hovercard">
+
+                    <div class="cardheader">
+
+                    </div>
+                    <div class="avatar">
+                        <img src='<%=assassins.photo%>' style='width:100px'>
+                    </div>
+                    <div class="info">
+                        <div class="title">
+                            <a target="_blank">
+                                <%= assassins.full_name %></a>
+                        </div>
+                        <p> CODE NAME: <%=  assassins.code_names %></p>
+                        <p> WEAPON: <%=  assassins.weapon %> </p>
+                        <p> CONTACT INFO: <%= assassins.contact_info %></p>
+                        <p> AGE: <%= assassins.age %></p>
+                        <p> PRICE: <%= assassins.price %></p>
+                        <p> RATING: <%=  assassins.rating %> </p>
+                        <p> KILLS: <%=  assassins.kills %> </p> 
+                    </div>
+                    <div>
+                            <a href="/EditAssassin/<%=assassins.id %>" ><button class='btn btn-danger'>EDIT</button></a>
+                            <form action="/delete/<%=assassins.id %>" method="POST" style="display:inline-block">
+                                <button class='btn btn-danger' type='submit'>Delete</button></form>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <% }); %>
+        </div>
+
+    </span>
+  
+    
+</body>
+
+</html>

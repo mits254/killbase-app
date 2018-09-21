@@ -1,0 +1,51 @@
+<% include header.ejs %>
+<body style='background-color:lightgray'>
+    <h2 style="text-align:center">NEW ASSASSIN</h2>
+    <form name="form1" method="POST" action="/newAssassin/add">
+        
+        <table align='center'>
+            <tr>
+                <td>PHOTO : </td>
+                <td><input type="text" name="photo" ></td><br>
+            </tr>
+            <tr>
+                <td>Full name : </td>
+                <td><input type="text" name="full_name" required='true'></td>
+            </tr>
+            <tr>
+                <td>Code name : </td>
+                <td><input type="text" name="code_names" required='true'></td>
+            </tr>
+            <tr>
+                <td>Weapon : </td>
+                <td><input type="text" name="weapon" required='true'></td>
+            </tr>
+            <tr>
+                <td>Contact Info. : </td>
+                <td><input type="text" name="contact_info" required='true'></td>
+            </tr>
+            <tr>
+            <tr>
+                <td>Age : </td>
+                <td><input type="text" name="age" required='true' placeholder="integer only"></td>
+            </tr>
+            <tr>
+                <td>Price : </td>
+                <td><input type="text" name="price" required='true' placeholder="integer only"></td>
+            </tr>
+            <tr>
+                <td>Rating : </td>
+                <td><input type="text" name="rating" required='true' placeholder="integer only"></td>
+            </tr>
+            <tr>
+                <td>Kills : </td>
+                <td><input type="text" name="kills" required='true' placeholder="integer only"></td>
+            </tr>
+            <td colspan="2" align='center'><input type="submit" value="Save"  ></td>
+            </tr>
+        </table>
+    
+    </form>
+    
+</body>
+</html>

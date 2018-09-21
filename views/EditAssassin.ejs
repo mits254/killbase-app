@@ -1,0 +1,50 @@
+<% include header.ejs %>
+<body  style='background-color:lightgray'>
+   
+    <h2 style='text-align: center'>EDIT ASSASSIN</h2>
+    <form name="form1" method="post" action="/EditAssassin/<%= assassins[0].id %>">
+        <table align='center'> 
+            <tr>
+                <td>PHOTO</td>
+                <td><input type="text" name="photo" value="<%= assassins[0].photo %>"></td>
+            </tr>
+            <tr>
+                <td>Full name</td>
+                <td><input type="text" name="full_name" required='true' value="<%= assassins[0].full_name %>"></td>
+            </tr>
+            <tr>
+                <td>Code name</td>
+                <td><input type="text" name="code_names" required='true' value="<%= assassins[0].code_names %>"></td>
+            </tr>
+            <tr>
+                <td>Weapon</td>
+                <td><input type="text" name="weapon" required='true' value="<%= assassins[0].weapon %>"></td>
+            </tr>
+            <tr>
+                <td>Contact Info.</td>
+                <td><input type="text" name="contact_info" required='true' value="<%= assassins[0].contact_info %>"></td>
+            </tr>
+            <tr>
+            <tr>
+                <td>Age</td>
+                <td><input type="text" name="age" required='true' value="<%= assassins[0].age %>"></td>
+            </tr>
+            <tr>
+                <td>Price</td>
+                <td><input type="text" name="price" required='true' value="<%= assassins[0].price %>"></td>
+            </tr>
+            <tr>
+                <td>Rating</td>
+                <td><input type="text" name="rating" required='true' value="<%= assassins[0].rating %>"></td>
+            </tr>
+            <tr>
+                <td>Kills</td>
+                <td><input type="text" name="kills" required='true' value="<%= assassins[0].kills %>"></td>
+            </tr>
+            <td colspan="2"><input type="submit" value="Save"></td>
+            </tr>
+        </table>
+    </form>
+    
+</body>
+</html>
