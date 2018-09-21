@@ -2,6 +2,7 @@ let express = require('express');
 let router = express.Router();
 let knex = require('../db/knex');
 
+//rendering the contract page 
 router.get('/contracts', function(req, res,next) {  
   knex('contracts')
   .orderBy('contract_id')
@@ -16,6 +17,7 @@ router.get('/contracts', function(req, res,next) {
   });
 });
 
+//rendering the contract by id
 router.get('/contracts/:contract_id',(req,res, next)=>{
   knex('contracts').where('contract_id',req.params.contract_id).then((contracts)=>{
     if(!contracts) {
@@ -29,16 +31,20 @@ router.get('/contracts/:contract_id',(req,res, next)=>{
   })
 });  
 
+// rendering the new contract page
 router.get('/newContract', function(req, res) {  
   res.render('contractsView/newContract',{ }); 
 })
+
+//update the new contract into the 
 router.post('/newContract/add',(req, res, next)=>{
   knex('contracts').insert({ target_name : req.body.target_name,
      target_location : req.body.target_location, 
      target_photo : req.body.target_photo || "https://media0.giphy.com/media/3o72F0CRAJ2hguyHSM/giphy.gif",
       target_security: req.body.target_security, 
       client_name :req.body.client_name,
-       budget : req.body.budget}, '*')
+       budget : req.body.budget,
+      complete:req.body.complete}, '*')
     .then((contracts)=>{
       res.render('contractsView/contracts',{contracts});
     })
@@ -70,7 +76,7 @@ router.post('/editContract/:contract_id',(req,res, next)=>{
        target_location : req.body.target_location, 
        target_photo : req.body.target_photo || "https://media0.giphy.com/media/3o72F0CRAJ2hguyHSM/giphy.gif",
         target_security: req.body.target_security, 
-        client_name :req.body.client_name, budget : req.body.budget}, '*').where('contract_id',req.params.contract_id)
+        client_name :req.body.client_name, budget : req.body.budget, complete:req.body.complete}, '*').where('contract_id',req.params.contract_id)
      .then((contracts)=>{
       res.render('contractsView/contracts',{contracts}); 
      })
@@ -82,7 +88,7 @@ router.post('/editContract/:contract_id',(req,res, next)=>{
 
 
 
-router.post('/completeContract/:contract_id',(req, res, next)=>{
+router.post('/deleteContract/:contract_id',(req, res, next)=>{
   let row;
   knex('contracts')
   .where('contract_id',req.params.contract_id)
@@ -97,8 +103,28 @@ router.post('/completeContract/:contract_id',(req, res, next)=>{
      
      //res.send(row)
 
-     res.render('contractsView/completeContract',{})
+     res.render('contractsView/deleteContract',{})
   })
+  .catch((err)=>{
+    next(err);
+  });
+});
+
+router.get('/completeContract/:contract_id',(req, res, next)=>{
+  
+  // knex('contracts')
+  // .where('contract_id',req.params.contract_id)
+  // .then((contracts)=>{
+  //   if(!contracts) {
+  //     return next();
+  //   }
+  
+    knex('contracts').update({complete:true}).where('contract_id',req.params.contract_id)
+    .then((contracts)=>{
+     
+     res.render('contractsView/completeContract',{contracts})
+    })
+  // })
   .catch((err)=>{
     next(err);
   });
