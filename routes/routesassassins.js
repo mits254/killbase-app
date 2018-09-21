@@ -2,6 +2,14 @@ let express = require('express');
 let router = express.Router();
 let knex = require('../db/knex');
 
+router.get('/', function(req, res,) {  
+  res.render('index',{});
+
+  })
+  .catch((err)=>{
+    next(err);
+});
+
 router.get('/assassins', function(req, res,next) {  
   knex('assassins')
   .orderBy('id')
