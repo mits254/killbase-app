@@ -17,7 +17,7 @@ exports.seed = function(knex, Promise) {
             "kills": 28
           },
           { 
-            "photo": "https://imgix.bustle.com/rehost/2016/9/14/3855909f-ba70-4538-8744-2ae131d3bafa.jpg?w=970&h=582&fit=crop&crop=faces&auto=format&q=70",
+            "photo": "https://media.giphy.com/media/26ufg0PzQM4OVJADm/giphy.gif",
             "full_name": "Anton Chigurh",
             "code_names": "Old Man",
             "weapon": "Pneumatic bolt gun",
@@ -61,7 +61,7 @@ exports.seed = function(knex, Promise) {
             "kills": 433
           },
           { 
-            "photo": "https://orig00.deviantart.net/7498/f/2016/072/0/1/014586e4b78d1003845d60a67cb2ec96-d9uzs5a.jpg",
+            "photo": "https://thumbs.gfycat.com/CriminalImpassionedCoqui-small.gif",
             "full_name": "Jules Winnfield",
             "code_names": "",
             "weapon": "Pistol",

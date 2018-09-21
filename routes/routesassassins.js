@@ -38,7 +38,7 @@ router.get('/newAssassin', function(req, res) {
 
 
 router.post('/newAssassin/add',(req, res, next)=>{
-  knex('assassins').insert({photo:req.body.photo ||'https://media2.giphy.com/media/l4pSWRbxwp4Ss2xkQ/giphy.webp',
+  knex('assassins').insert({photo:req.body.photo ||'https://media.giphy.com/media/ytd9JPP56Hk8o/giphy.gif',
     full_name : req.body.full_name, 
     code_names : req.body.code_names, 
     weapon :req.body.weapon, 

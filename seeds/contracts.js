@@ -27,7 +27,7 @@ exports.seed = function(knex, Promise) {
           {
             "target_name": "Norman Stansfield",
             "target_location": "Manhattan",
-            "target_photo": "https://i.imgur.com/mdIk33E.jpg",
+            "target_photo": "http://digitalspyuk.cdnds.net/17/01/640x320/landscape-1483538046-shocked-joey.gif",
             "target_security": 7,
             "client_name": "Mathilda",
             "budget": 35,
@@ -45,7 +45,7 @@ exports.seed = function(knex, Promise) {
           {
             "target_name": "Sonny Valerio",
             "target_location": "Queens",
-            "target_photo": "https://goo.gl/8DHYUS",
+            "target_photo": "https://media.giphy.com/media/gNdXvqNxaxxnO/giphy.gif",
             "target_security": 4,
             "client_name": "Ray Vargo",
             "budget": 10,
