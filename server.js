@@ -4,12 +4,14 @@ const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 8000;
 const knex = require('./db/knex');
 let path = require('path');
+const methodOverride = require('method-override');
 
 let app = express();
 
 app.disable('x-powered-by');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({}));
+app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));
 
 let assassins = require('./routes/routesassassins');

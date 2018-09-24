@@ -1,12 +1,19 @@
 <% include ../header.ejs %>
 <body style='background-color:lightgray'>
-    <div style='text-align: center;font-style: italic;
+    <div style='justify-content: center;font-style: italic;
     font-family: cursive;font-weight: bold'>
-        <h1>COMPLETED CONTRACTS</h1><a href="/newContract" style='float:right; padding-left: 30px'><button>New Contract</button></a>
-        <a href="/activeContracts" style='float:right; padding-left: 30px'><button>Active Contract</button></a>
+        <h1 style='text-align: center;'>COMPLETED CONTRACTS</h1><h5 style='float: left'>Total no. of Contracts : <% let a = 0; %> 
+            <% contracts.forEach(function(contracts){ %>
+                <% if(contracts.complete === true) { %>
+                    <%  a++; %>
+                <% } %>
+                    <% });%>
+                    <%= a %> </h5>
+        <a href="/newContract" style='float:right; padding-left: 30px'><button class='btn btn-danger'>New Contract</button></a>
+        <a href="/activeContracts" style='float:right; padding-left: 30px'><button class='btn btn-danger'>Active Contract</button></a>
     </div>
      
-    <span class="container">
+    <span class="container" style='float:left' align='left'>
         <div class="row">
             <% contracts.forEach(function(contracts){ %>
                 <% if(contracts.complete === true) {%>
@@ -32,8 +39,8 @@
                         
                     </div>
                     <div>
-                            <a href="/editContract/<%=contracts.contract_id %>"><button>EDIT</button></a>
-                            <form action="/completeContract/<%=contracts.contract_id %>" method="POST">
+                            <a href="/editContract/<%=contracts.contract_id %>"><button class='btn btn-danger'>EDIT</button></a>
+                            <form action="/completeContract/<%=contracts.contract_id %>" method="POST" style="display:inline-block">
                                 <button class='btn btn-danger' type='submit'>Delete</button></form>
                     </div>
 

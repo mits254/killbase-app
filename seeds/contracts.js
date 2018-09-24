@@ -13,7 +13,8 @@ exports.seed = function(knex, Promise) {
             "target_security": 3,
             "client_name": "Marcellus Wallace",
             "budget": 40,
-            "complete": true
+            "complete": true,
+            "assigned_person": 1
           },
           {
             "target_name": "The Jaguar",
@@ -22,7 +23,8 @@ exports.seed = function(knex, Promise) {
             "target_security": 9,
             "client_name": "Concerto",
             "budget": 70,
-            "complete":false
+            "complete":false,
+            "assigned_person": null
           },
           {
             "target_name": "Norman Stansfield",
@@ -31,7 +33,8 @@ exports.seed = function(knex, Promise) {
             "target_security": 7,
             "client_name": "Mathilda",
             "budget": 35,
-            "complete":false
+            "complete":false,
+            "assigned_person": null
           },
           {
             "target_name": "Santino D'Antonio",
@@ -40,7 +43,8 @@ exports.seed = function(knex, Promise) {
             "target_security": 10,
             "client_name": "Winston",
             "budget": 25,
-            "complete": true
+            "complete": true,
+            "assigned_person": 4
           },
           {
             "target_name": "Sonny Valerio",
@@ -49,7 +53,8 @@ exports.seed = function(knex, Promise) {
             "target_security": 4,
             "client_name": "Ray Vargo",
             "budget": 10,
-            'complete': true
+            'complete': true,
+            "assigned_person": 8
           }
         
       ]);

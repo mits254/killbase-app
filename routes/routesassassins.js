@@ -20,12 +20,12 @@ router.get('/assassins', function(req, res,next) {
   });
 });
 
-router.get('/assassins/:id',(req,res, next)=>{
+router.get('/one_assassin/:id',(req,res, next)=>{
   knex('assassins').where('id',req.params.id).then((assassins)=>{
     if(!assassins) {
       return next();
     }
-    res.render('assassins',{assassins});
+    res.render('one_assassin',{assassins});
   })
   .catch((err)=>{
     next(err);
@@ -47,8 +47,8 @@ router.post('/newAssassin/add',(req, res, next)=>{
     price: req.body.price, 
     rating: req.body.rating, 
     kills:req.body.kills}, '*')
-    .then((assassins)=>{
-      res.render('assassins',{assassins});
+    .then(()=>{
+      res.redirect(302, '/assassins');
     })
     .catch((err)=>{
       next(err);
@@ -110,7 +110,62 @@ router.post('/delete/:id',(req, res, next)=>{
     next(err);
   });
 });  
- 
+
+router.get('/age', function(req, res,next) {  
+  knex('assassins')
+  .orderBy('age')
+  .then((assassins)=>{
+    // res.render('assassins',{
+    //   assassins:assassins
+    res.render('assassins',{assassins});
+
+  })
+  .catch((err)=>{
+    next(err);
+  });
+});
+
+router.get('/price', function(req, res,next) {  
+  knex('assassins')
+  .orderBy('price')
+  .then((assassins)=>{
+    // res.render('assassins',{
+    //   assassins:assassins
+    res.render('assassins',{assassins});
+
+  })
+  .catch((err)=>{
+    next(err);
+  });
+});
+
+router.get('/rating', function(req, res,next) {  
+  knex('assassins')
+  .orderBy('rating')
+  .then((assassins)=>{
+    // res.render('assassins',{
+    //   assassins:assassins
+    res.render('assassins',{assassins});
+
+  })
+  .catch((err)=>{
+    next(err);
+  });
+});
+
+router.get('/kills', function(req, res,next) {  
+  knex('assassins')
+  .orderBy('kills')
+  .then((assassins)=>{
+    // res.render('assassins',{
+    //   assassins:assassins
+    res.render('assassins',{assassins});
+
+  })
+  .catch((err)=>{
+    next(err);
+  });
+});
   
 
   module.exports = router;

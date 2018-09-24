@@ -18,12 +18,12 @@ router.get('/contracts', function(req, res,next) {
 });
 
 //rendering the contract by id
-router.get('/contracts/:contract_id',(req,res, next)=>{
+router.get('/one_contract/:contract_id',(req,res, next)=>{
   knex('contracts').where('contract_id',req.params.contract_id).then((contracts)=>{
     if(!contracts) {
       return next();
     }
-    res.render('contractsView/contracts',{contracts});
+    res.render('contractsView/one_contract',{contracts});
 
   })
   .catch((err)=>{
@@ -45,8 +45,8 @@ router.post('/newContract/add',(req, res, next)=>{
       client_name :req.body.client_name,
        budget : req.body.budget,
       complete:req.body.complete}, '*')
-    .then((contracts)=>{
-      res.render('contractsView/contracts',{contracts});
+    .then(()=>{
+      res.redirect(302,'/contracts');
     })
     .catch((err)=>{
       next(err);
@@ -158,7 +158,47 @@ router.get('/successContracts', function(req, res,next) {
   });
 })
 
- 
+router.get('/budget', function(req, res,next) {  
+  knex('contracts')
+  .orderBy('budget')
+  .then((assassins)=>{  
+    // res.render('assassins',{
+    //   assassins:assassins
+    res.render('contracts',{contracts});
+
+  })
+  .catch((err)=>{
+    next(err);
+  });
+});
+
+// router.get('/assignContract/:contract_id',(req,res, next)=>{
+//   knex('contracts').where('contract_id',req.params.contract_id).then((contracts)=>{
+//     if(!contracts) {
+//       return next();
+//     }
+//     res.render('contractsView/assignContract',{contracts});
+
+//   })
+//   .catch((err)=>{
+//     next(err);
+//   })
+// });  
+
+// router.post('/search',(req,res, next)=>{
+//   console.log(req.body.keyword);
+//   knex('contracts').where('target_name',req.body.target_name).then((contracts)=>{
+//     if(!contracts) {
+//       return next();
+//     }
+//     res.render('contractsView/contracts',{contracts});
+
+//   })
+//   .catch((err)=>{
+//     next(err);
+//   })
+// });  
+
   
 
   module.exports = router;
