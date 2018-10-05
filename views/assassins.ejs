@@ -8,15 +8,15 @@
         <h5 style='float: left'>Total no. of Assassins :
             <%= assassins.length %>
         </h5>
-        <div class="dropdown" style='float:right;padding-right: 10px;'>
-            <button class="dropbtn">Sort By :</button>
-            <div class="dropdown-content">
-                <a href="/age">Age</a>
-                <a href="/price">Price</a>
-                <a href="/rating">Rating</a>
-                <a href="/kills">Kills</a>
+            <div class="dropdown" style='float:right;padding-right: 10px;'>
+                <button class="dropbtn">Sort By :</button>
+                <div class="dropdown-content">
+                    <a href="/age">Age</a>
+                    <a href="/price">Price</a>
+                    <a href="/rating">Rating</a>
+                    <a href="/kills">Kills</a>
+                </div>
             </div>
-        </div>
 
     </div>
 
@@ -63,7 +63,7 @@
                         </div>
                         <div>
                             <a href="/EditAssassin/<%=assassins.id %>"><button class='btn btn-danger'>EDIT</button></a>
-                            <form action="/delete/<%=assassins.id %>" method="POST" style="display:inline-block">
+                            <form action="/delete/<%=assassins.id %>?_method=delete" method="POST" style="display:inline-block">
                                 <button class='btn btn-danger' type='submit'>Delete</button></form>
                         </div>
 

@@ -12,6 +12,7 @@
                 <button class="dropbtn">Sort By :</button>
                 <div class="dropdown-content">
                   <a href="/budget">Budget</a>
+                  <a href="/target_security">Target Security</a>
                   
                 </div>
         </div>
@@ -44,7 +45,7 @@
                     <div>
                         <!-- making the buttons -->
                             <a href="/editContract/<%=contracts.contract_id %>"><button class='btn btn-danger'>EDIT</button></a>
-                            <form action="/deleteContract/<%=contracts.contract_id %>" method="POST" style="display:inline-block">
+                            <form action="/deleteContract/<%=contracts.contract_id %>?_method=delete" method="POST" style="display:inline-block">
                                 <button class='btn btn-danger' type='submit'>Delete</button></form>
                                 
                                 <a href="/completeContract/<%=contracts.contract_id %>" style=' position: relative;'><button class='btn btn-danger'>Complete</button></a>

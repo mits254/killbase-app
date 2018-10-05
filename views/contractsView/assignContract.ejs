@@ -1,38 +1,44 @@
-<!-- <body>
-        your content <a href="#" id="open-modal-1">open modal 1</a>
-        <div class="modal" id="modal-1">
-            the modal content
-        </div>
-    </body> -->
-    <!-- <body>
+<!-- including the header -->
+<% include ../header.ejs %>
+
+<body style='background-color:lightgray'>
+    <div style='justify-content: center;font-style: italic;
+    font-family: cursive;font-weight: bold'>
+        <h1 style='text-align: center;'>ACTIVE CONTRACTS</h1><h5 style='float: left'>Total no. of Contracts: <% let a = 0; %> 
+            <% contracts.forEach(function(contracts){ %>
+                <% if(contracts.complete === false) { %>
+                    <%  a++; %>
+                <% } %>
+                    <% });%>
+                    <%= a %>
+        </h5>
+        <a href="/newContract" style='float:right; padding-left: 30px'><button class='btn btn-danger'>New Contract</button></a>
+        <a href="/successContracts" style='float:right; padding-left: 20px'><button class='btn btn-danger'>Completed Contract</button></a>
         
-    
-    <div class="bg-modal">
-     <div class="modal-content">
-        <h1>hello world</h1>
-     </div>
+        
     </div>
-</body> -->
-<!-- <div class="popup-wrapper">
-        <div id="popup-container">
-            <h5>Contact Us</h5>
-            <form>
-                <div class="form-group">
-                  <label for="name">Name</label>
-                  <input type="text" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea class="form-control"></textarea>
-                </div>
-            </form>
-            <!-- <div class="modal-footer">
-              <button class="btn btn-primary btn-block">Submit</button>
-              <p><a herf="javascript:void(0)" onclick="toggle_visibility('contact-popup');">Close Popup</a></p>
-            </div> -->
-        </div>
- -->
+    
+     <!-- making the active contract cards -->
+
+       <!-- making the cards -->
+    <span class="container" style='float:left' align='left'>
+            <div class="row">
+                <% contracts.forEach(function(contracts){ %>
+                    <% if(!contracts.assigned_person){ %>
+
+                        <%= contracts.full_name %>
+                        <h5>Assign the contract :  </h5>
+                        <input type="text" name="target_name" required='true' placeholder="Assassin Id Please">
+                        
+                        <form action="/assignContract/<%=contracts.contract_id %>/add" style='float:right; padding-left: 20px' method='POST'><button class='btn btn-danger'>ADD</button></form>
+                    <% } else{ %>
+                       <h5>This Contract is already assigned to <%= contracts.full_name %></h5>
+                    <% } %>
+                <% }); %>
+            </div>
+    
+    </span>
+        
+    </body>
+    
+    </html>

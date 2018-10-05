@@ -13,7 +13,10 @@ router.get('/contracts', function(req, res,next) {
 
   })
   .catch((err)=>{
-    next(err);
+    res.status(500).json({
+      status: 'error',
+      data: err
+    });
   });
 });
 
@@ -67,7 +70,7 @@ router.get('/editContract/:contract_id', function(req, res) {
 });  
 
 
-router.post('/editContract/:contract_id',(req,res, next)=>{
+router.patch('/editContract/:contract_id',(req,res, next)=>{
   knex('contracts').where('contract_id',req.params.contract_id).then((contracts)=>{
     if(!contracts) {
       return next();
@@ -88,7 +91,7 @@ router.post('/editContract/:contract_id',(req,res, next)=>{
 
 
 
-router.post('/deleteContract/:contract_id',(req, res, next)=>{
+router.delete('/deleteContract/:contract_id',(req, res, next)=>{
   let row;
   knex('contracts')
   .where('contract_id',req.params.contract_id)
@@ -161,10 +164,9 @@ router.get('/successContracts', function(req, res,next) {
 router.get('/budget', function(req, res,next) {  
   knex('contracts')
   .orderBy('budget')
-  .then((assassins)=>{  
-    // res.render('assassins',{
-    //   assassins:assassins
-    res.render('contracts',{contracts});
+  .then((contracts)=>{  
+   
+    res.render('contractsView/contracts',{contracts});
 
   })
   .catch((err)=>{
@@ -172,18 +174,55 @@ router.get('/budget', function(req, res,next) {
   });
 });
 
-// router.get('/assignContract/:contract_id',(req,res, next)=>{
-//   knex('contracts').where('contract_id',req.params.contract_id).then((contracts)=>{
-//     if(!contracts) {
-//       return next();
-//     }
-//     res.render('contractsView/assignContract',{contracts});
+router.get('/target_security', function(req, res,next) {  
+  knex('contracts')
+  .orderBy('target_security')
+  .then((contracts)=>{  
+   
+    res.render('contractsView/contracts',{contracts});
 
-//   })
-//   .catch((err)=>{
-//     next(err);
-//   })
-// });  
+  })
+  .catch((err)=>{
+    next(err);
+  });
+});
+
+router.get('/assignContract/:contract_id',(req,res, next)=>{
+  
+  knex('contracts')
+  .leftJoin('assassins','assassins.full_name','contracts.assigned_person')
+  .where('contract_id',req.params.contract_id)
+  .then((contracts)=>{
+    if(!contracts) {
+      return next();
+    }
+
+    res.render('contractsView/assignContract',{contracts});
+
+  })
+  .catch((err)=>{
+    next(err);
+  })
+});  
+
+router.post('/assignContract/:contract_id/add',(req, res, next)=>{
+  knex('contracts')
+  .where('contract_id',req.params.contract_id)
+  .then((contracts)=>{
+    if(!contracts) {
+      return next();
+    }
+    console.log(contracts);
+  knex('contracts')
+  .insert({ assigned_person:req.body.assigned_person}, '*')
+    .then(()=>{
+      res.render('contractsView/assignContract',{contracts});
+    })
+  })
+    .catch((err)=>{
+      next(err);
+    })  
+});
 
 // router.post('/search',(req,res, next)=>{
 //   console.log(req.body.keyword);

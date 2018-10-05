@@ -18,7 +18,7 @@
             <% contracts.forEach(function(contracts){ %>
                 <% if(contracts.complete === true) {%>
             <div class="col-lg-3 col-sm-6">
-
+              <a href="/one_contract/<%= contracts.contract_id%> ">    
                 <div class="card hovercard">
 
                     <div class="cardheader">
@@ -46,7 +46,7 @@
 
 
                 </div>
-
+             </a>
             </div>
             <%} %>
             <% }); %>

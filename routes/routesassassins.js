@@ -16,7 +16,10 @@ router.get('/assassins', function(req, res,next) {
 
   })
   .catch((err)=>{
-    next(err);
+    res.status(500).json({
+      status: 'error',
+      data: err
+    });
   });
 });
 
@@ -28,7 +31,10 @@ router.get('/one_assassin/:id',(req,res, next)=>{
     res.render('one_assassin',{assassins});
   })
   .catch((err)=>{
-    next(err);
+    res.status(500).json({
+      status: 'error',
+      data: err
+    });
   })
 });
 
@@ -51,7 +57,10 @@ router.post('/newAssassin/add',(req, res, next)=>{
       res.redirect(302, '/assassins');
     })
     .catch((err)=>{
-      next(err);
+      res.status(500).json({
+        status: 'error',
+        data: err
+      });
     })  
 });
 
@@ -68,7 +77,7 @@ router.get('/EditAssassin/:id', function(req, res) {
 })
 });  
 
-router.post('/EditAssassin/:id',(req,res, next)=>{
+router.patch('/EditAssassin/:id',(req,res, next)=>{
   
   knex('assassins').where('id',req.params.id).then((assassins)=>{
     
@@ -92,7 +101,7 @@ router.post('/EditAssassin/:id',(req,res, next)=>{
 
 
 
-router.post('/delete/:id',(req, res, next)=>{
+router.delete('/delete/:id',(req, res, next)=>{
   let row;
   knex('assassins')
   .where('id',req.params.id)

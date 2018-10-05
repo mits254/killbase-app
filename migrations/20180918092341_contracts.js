@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
         table.string('client_name');
         table.integer('budget');
         table.boolean('complete');
-        table.integer('assigned_person');
+        table.string('assigned_person');
     })
 }
 exports.down = function(knex, Promise) {

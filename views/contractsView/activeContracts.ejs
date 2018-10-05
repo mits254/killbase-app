@@ -26,7 +26,7 @@
                 <% contracts.forEach(function(contracts){ %>
                     <% if(contracts.complete === false) {%>
                 <div class="col-lg-3 col-sm-6">
-    
+                  <a href="/one_contract/<%= contracts.contract_id%> ">    
                     <div class="card hovercard">
     
                         <div class="cardheader">
@@ -48,16 +48,16 @@
                         </div>
                         <div>
                             <!-- making the buttons -->
-                                <a href="/editContract/<%=contracts.contract_id %>"><button class='btn btn-danger'>EDIT</button></a>
+                                <a href="/editContract/<%=contracts.contract_id %>"><button class='btn btn-danger'>Edit</button></a>
                                 <form action="/deleteContract/<%=contracts.contract_id %>" method="POST" style="display:inline-block">
                                     <button class='btn btn-danger' type='submit'>Delete</button></form>
-                                    
-                                    <a href="/completeContract/<%=contracts.contract_id %>" style=' position: relative;'><button class='btn btn-danger'>Complete</button></a>
+                                    <a href="/assignContract/<%=contracts.contract_id %>" style=' position: relative;'><button class='btn btn-danger'>Assign</button></a>
+                                    <form action="/completeContract/<%=contracts.contract_id %>" style=' position: relative;' method='POST'><button class='btn btn-danger'>Complete</button></form>
                         </div>
     
     
                     </div>
-    
+                  </a>
                 </div>
                 <% }; %>
                 <% }); %>

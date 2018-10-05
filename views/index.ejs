@@ -1,9 +1,40 @@
-
 <% include header.ejs %>
-<body background= "https://pre00.deviantart.net/044c/th/pre/f/2008/093/9/7/hitman_wallpaper___wooded_bg_by_r_deano.jpg" 
-style="background-repeat: no-repeat;
+
+<body background="https://pre00.deviantart.net/044c/th/pre/f/2008/093/9/7/hitman_wallpaper___wooded_bg_by_r_deano.jpg"
+  style="background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
   overflow: hidden;">
+  <div style='position: relative;left:-550px;'>
+    <div class="container h-80">
+      <div class="row align-items-center h-100">
+        <div class="col-3 mx-auto">
+          <div class="text-center">
+            <img id="profile-img" class="rounded-circle profile-img-card" src="https://i.imgur.com/6b6psnA.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin" action="/users" method="POST" >
+              <h5>Sign up form !! </h5>
+              <input type="string" name="full_name" id="full_name" class="form-control form-group" placeholder="Full Name" required autofocus>
+              <input type="string" name="email" id="email" class="form-control form-group" placeholder="Email" required autofocus>
+              <input type="password" name="password" id="inputPassword" class="form-control form-group" placeholder="password"
+                required autofocus>
+                
+                  
+                 <a onClick="showHideDiv('divMsg')">Sign-in</a><br><br>
+                  <div id="divMsg" style="background-color: #006969; color: #ffffff; height: 200px; width: 200px; display:none">
+                      <b>Hello friends, <br>How are you?</b>
+                  </div>
+               
+                
+                
+              <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" style='background-color: black'>Login</button>
+            </form><!-- /form -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
+
 </html>

@@ -24,7 +24,7 @@ exports.seed = function(knex, Promise) {
             "client_name": "Concerto",
             "budget": 70,
             "complete":false,
-            "assigned_person": null
+            "assigned_person": ''
           },
           {
             "target_name": "Norman Stansfield",
@@ -34,7 +34,7 @@ exports.seed = function(knex, Promise) {
             "client_name": "Mathilda",
             "budget": 35,
             "complete":false,
-            "assigned_person": null
+            "assigned_person": ''
           },
           {
             "target_name": "Santino D'Antonio",
